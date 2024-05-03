@@ -189,7 +189,7 @@ build {
   }
 
   provisioner "shell" {
-    environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
+    environment_vars = ["DEBIAN_FRONTEND=noninteractive", "HELPER_SCRIPTS=${var.helper_script_folder}"]
     execute_command  = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
     scripts          = [
       "${path.root}/../scripts/build/install-ms-repos.sh",
@@ -223,7 +223,7 @@ build {
   }
 
   provisioner "file" {
-    destination = "${var.image_folder}/docs-gen/"
+    destination = "${var.image_folder}/doc s-gen/"
     source      = "${path.root}/../../../helpers/software-report-base"
   }
 
